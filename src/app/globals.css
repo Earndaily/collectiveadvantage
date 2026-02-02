@@ -1,0 +1,224 @@
+/* =============================================================
+   COLLECTIVE ADVANTAGE – Global Styles
+   Dark, refined fintech aesthetic with amber/gold accents.
+   ============================================================= */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens (CSS Variables) ─── */
+:root {
+  /* Core Palette */
+  --color-surface:        #0f1117;   /* Deepest background */
+  --color-surface-raised: #161923;   /* Cards, panels */
+  --color-surface-hover:  #1e2333;   /* Hover states */
+  --color-border:         #2a3042;   /* Subtle borders */
+
+  /* Gold / Amber Accent (Primary) */
+  --color-accent:         #f0a832;
+  --color-accent-dim:     #c88a1a;
+  --color-accent-glow:    rgba(240, 168, 50, 0.25);
+
+  /* Emerald (Success / Active) */
+  --color-success:        #34d399;
+  --color-success-dim:    rgba(52, 211, 153, 0.15);
+
+  /* Rose (Error / Warning) */
+  --color-error:          #fb7185;
+  --color-error-dim:      rgba(251, 113, 133, 0.15);
+
+  /* Sky (Info / Links) */
+  --color-info:           #60a5fa;
+
+  /* Text */
+  --color-on-surface:     #e8eaf0;
+  --color-on-surface-dim: #8891a5;
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+/* ─── Base Resets & Body ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Utility Classes ─── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+.bg-surface        { background-color: var(--color-surface); }
+.bg-surface-raised { background-color: var(--color-surface-raised); }
+.bg-surface-hover  { background-color: var(--color-surface-hover); }
+
+.text-on-surface     { color: var(--color-on-surface); }
+.text-on-surface-dim { color: var(--color-on-surface-dim); }
+.text-accent         { color: var(--color-accent); }
+.text-success        { color: var(--color-success); }
+.text-error          { color: var(--color-error); }
+.text-info           { color: var(--color-info); }
+
+.border-surface { border-color: var(--color-border); }
+
+/* ─── Card Component Base ─── */
+.card {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--color-accent-dim);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+/* ─── Button Variants ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dim));
+  color: #0f1117;
+  box-shadow: 0 4px 14px var(--color-accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--color-accent-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-on-surface-dim);
+  border: 1px solid var(--color-border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent-dim);
+  color: var(--color-accent);
+  background-color: var(--color-surface-hover);
+}
+
+.btn-danger {
+  background: var(--color-error-dim);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+/* ─── Input Styling ─── */
+.input-field {
+  width: 100%;
+  background-color: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: var(--color-on-surface-dim);
+}
+
+.input-field:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+/* ─── Scrollbar (WebKit) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-dim);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px var(--color-accent-glow); }
+  50%      { box-shadow: 0 0 28px var(--color-accent-glow); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ─── Status Badges ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-funding  { background: var(--color-accent-glow);  color: var(--color-accent); }
+.badge-building { background: rgba(96,165,250,0.15);     color: var(--color-info); }
+.badge-active   { background: var(--color-success-dim);  color: var(--color-success); }
